@@ -1,9 +1,6 @@
 # Repositório para o exercício de POO (Grupo 5)
-## Atividade estipulada pelo Arnaldo
 
-## Tema escolhido: Sistema de cadastro de funcionários
-
-## Objetivo:
+## Objetivo da atividade:
 - Criar um sistema completo aplicando os conceitos aprendidos: classe, método, herança, polimorfismo, interface e encapsulamento.
 
 ## Requisitos:
@@ -16,3 +13,5 @@
 - Daniel Bonfim;
 - Eduarda Leal;
 - Felipe Gabriel;
+
+## Tema escolhido: Sistema de cadastro de funcionários
