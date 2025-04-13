@@ -1,5 +1,4 @@
 package com.github.ydewolf.utils;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInput {
@@ -47,7 +46,7 @@ public class UserInput {
                 user_input = this.input.nextLine();
                 i++;
     
-            } while (user_input.length() < min_length && user_input.length() > max_length);
+            } while (user_input.length() < min_length || user_input.length() > max_length);
 
             boolean valid = true;
             for (String character : invalid_characteres) {
