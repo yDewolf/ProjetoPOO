@@ -1,9 +1,11 @@
 package com.github.ydewolf.classes;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class UserHolder {
-    private ArrayList<User> users = new ArrayList<User>();
+    private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<String[]> pontos = new ArrayList<>();
     
     public UserHolder() {
 
@@ -52,5 +54,10 @@ public class UserHolder {
         }
 
         return null;
+    }
+
+    public void baterPonto(UserSession session) {
+        String[] ponto_data = {LocalDateTime.now().toString(), session.user.username};
+        this.pontos.add(ponto_data);
     }
 }
