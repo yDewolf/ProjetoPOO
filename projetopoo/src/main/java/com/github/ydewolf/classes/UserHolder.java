@@ -4,11 +4,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class UserHolder {
-    private ArrayList<User> users = new ArrayList<>();
-    private ArrayList<String[]> pontos = new ArrayList<>();
+    private ArrayList<User> users;
+    private ArrayList<String[]> pontos;
     
     public UserHolder() {
-
+        this.users = new ArrayList<>();
+        this.pontos = new ArrayList<>();
     }
 
     public UserSession logIn(String username, String password) {
