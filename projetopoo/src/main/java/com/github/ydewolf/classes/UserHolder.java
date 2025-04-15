@@ -10,12 +10,14 @@ public class UserHolder {
     public UserHolder() {
         this.users = new ArrayList<>();
         this.pontos = new ArrayList<>();
+
+        this.registerUser("admin", "admin", "default@email.com");
     }
 
     public UserSession logIn(String username, String password) {
         UserSession session = new UserSession(this.getUser(username));
         if (!session.isLogged()) {
-            return null;
+            return new UserSession(null);
         }
 
         return session;

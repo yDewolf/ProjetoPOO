@@ -1,41 +1,15 @@
 package com.github.ydewolf;
 
+import com.github.ydewolf.classes.UserHolder;
+import com.github.ydewolf.classes.UserSession;
+import com.github.ydewolf.menus.MainMenu;
 import com.github.ydewolf.utils.Menu;
 
 public class Main {
     public static void main(String[] args) {
-        Menu general_menu = new Menu();
+        UserHolder user_holder = new UserHolder();
+        user_holder.registerUser("andre", "123456", "andrersng@gmail.com");
 
-        String[] invalid_chars = {" "};
-        String username = general_menu.getInput(
-            4,
-            16,
-            "Type your username",
-            "This username is invalid",
-            invalid_chars
-        );
-        
-        System.out.println("Welcome " + username + "\n");
-        
-        String[] options = {"Leave", "Repeat your phrase"};
-        int selected = general_menu.selectOption(options, true, "Main Menu | Type the number of the option", "Please type a valid option");
-        switch (selected) {
-            case 0:
-                
-                break;
-            
-            case 1:
-                String phrase = general_menu.getInput(
-                    0,
-                    128,
-                    "Type a phrase and I will repeat it",
-                    "Your phrase may be too long"
-                );
-
-                System.out.println(phrase);
-
-            default:
-                break;
-        }
+        System.out.println(user_holder.getUser("andre").getPassword());
     }
 }
