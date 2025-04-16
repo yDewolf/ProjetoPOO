@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.github.ydewolf.enums.PontoFormat;
+import com.github.ydewolf.enums.Setores;
+import com.github.ydewolf.enums.TiposFuncionario;
 
 public class UserHolder {
     private ArrayList<User> users;
@@ -45,14 +47,11 @@ public class UserHolder {
             String data_nascismento,
             int telefone,
             String endereco,
-            String setor,
+            Setores setor,
             double salario,
-            String tipo
+            TiposFuncionario tipo
         ) {
-            if (cpf % Math.pow(10, 12) != 0) {
-                System.out.println("O funcionário não pôde ser registrado | cpf inválido");
-                return;
-            }
+            
 
             Intern funcionario = new Intern(name, this, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
             users.add(funcionario);
