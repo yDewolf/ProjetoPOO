@@ -37,10 +37,10 @@ public class Intern extends User {
     }
 
     public void baterPonto() {
-        this.user_holder.baterPonto(this.username);
+        this.user_holder.baterPonto(this);
     }
 
     public void seDemitir() {
-        this.user_holder.removeUser(null, username);
+        this.user_holder.removeUser(new UserSession(this), this.username);
 }
 }

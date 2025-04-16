@@ -3,6 +3,8 @@ package com.github.ydewolf.classes;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import com.github.ydewolf.enums.PontoFormat;
+
 public class UserHolder {
     private ArrayList<User> users;
     private ArrayList<String[]> pontos;
@@ -30,6 +32,32 @@ public class UserHolder {
     ) {
         User user = new User(this, username, password, email);
         users.add(user);
+
+        System.out.println("O usuário " + user.username + " foi registrado com sucesso");
+    }
+
+    public void registrarFuncionario(
+            String name,
+            String username,
+            String password,
+            String email,
+            int cpf,
+            String data_nascismento,
+            int telefone,
+            String endereco,
+            String setor,
+            double salario,
+            String tipo
+        ) {
+            if (cpf % Math.pow(10, 12) != 0) {
+                System.out.println("O funcionário não pôde ser registrado | cpf inválido");
+                return;
+            }
+
+            Intern funcionario = new Intern(name, this, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
+            users.add(funcionario);
+            
+            System.out.println("O funcionario " + funcionario.name + " foi registrado com sucesso");
     }
 
     public void removeUser(UserSession session, String username) {
@@ -42,11 +70,13 @@ public class UserHolder {
         // Usuário se demitindo
         if (session.getUser().username.equals(username)) {
             this.users.remove(user_idx);
+            System.out.println("O usuário " + username + " se demitiu com sucesso");
             return;
         }
 
         // Usuário é demitido
         this.users.remove(user_idx);
+        System.out.println("O usuário " + username + " foi demitido com sucesso");
     }
 
     public User getUser(String username) {
@@ -59,8 +89,10 @@ public class UserHolder {
         return null;
     }
 
-    public void baterPonto(UserSession session) {
-        String[] ponto_data = {LocalDateTime.now().toString(), session.user.username};
+    public void baterPonto(User user) {
+        String[] ponto_data = {LocalDateTime.now().toString(), user.username};
         this.pontos.add(ponto_data);
+
+        System.out.println(ponto_data[PontoFormat.TIME.ordinal()] + " | " + ponto_data[PontoFormat.USERNAME.ordinal()] + " bateu ponto");
     }
 }
