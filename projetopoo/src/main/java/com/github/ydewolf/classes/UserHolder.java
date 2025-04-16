@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.github.ydewolf.enums.PontoFormat;
 import com.github.ydewolf.enums.Setores;
 import com.github.ydewolf.enums.TiposFuncionario;
+import com.github.ydewolf.enums.TiposUsuario;
 
 public class UserHolder {
     private ArrayList<User> users;
@@ -39,6 +40,7 @@ public class UserHolder {
     }
 
     public void registrarFuncionario(
+            TiposUsuario tipo_usuario,
             String name,
             String username,
             String password,
@@ -51,15 +53,26 @@ public class UserHolder {
             double salario,
             TiposFuncionario tipo
         ) {
-            
-            Intern funcionario = new Intern(name, this, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
-            if (!funcionario.valido) {
-                System.out.println("O funcionário não pôde ser registrado");
-                return;
+            if (tipo_usuario == TiposUsuario.DONO) {
+                Admin funcionario = new Admin(name, this, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
+                if (!funcionario.valido) {
+                    System.out.println("O funcionário não pôde ser registrado");
+                    return;
+                }
+    
+                users.add(funcionario);
+                System.out.println("O dono " + funcionario.name + " foi registrado com sucesso");
+            } else {
+                Intern funcionario = new Intern(name, this, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
+                if (!funcionario.valido) {
+                    System.out.println("O funcionário não pôde ser registrado");
+                    return;
+                }
+    
+                users.add(funcionario);
+                System.out.println("O funcionario " + funcionario.name + " foi registrado com sucesso");
             }
 
-            users.add(funcionario);
-            System.out.println("O funcionario " + funcionario.name + " foi registrado com sucesso");
     }
 
     public void removeUser(UserSession session, String username) {

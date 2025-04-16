@@ -2,11 +2,10 @@ package com.github.ydewolf.classes;
 
 import com.github.ydewolf.enums.Setores;
 import com.github.ydewolf.enums.TiposFuncionario;
+import com.github.ydewolf.enums.TiposUsuario;
 
-public class admin extends Intern {
-
-
-    public admin(String name, UserHolder holder, String username, String password, String email, String cpf,
+public class Admin extends Intern {
+    public Admin(String name, UserHolder holder, String username, String password, String email, String cpf,
             String data_nascismento, String telefone, String endereco, Setores setor, double salario,
             TiposFuncionario tipo) 
         {
@@ -26,7 +25,7 @@ public class admin extends Intern {
         double salario,
         TiposFuncionario tipo
     ) {
-        this.user_holder.registrarFuncionario(name, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
+        this.user_holder.registrarFuncionario(TiposUsuario.NORMAL, name, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
     }
 
     public void demitirFuncionario() {
