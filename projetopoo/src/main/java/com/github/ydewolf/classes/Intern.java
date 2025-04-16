@@ -5,13 +5,15 @@ import com.github.ydewolf.enums.TiposFuncionario;
 
 public class Intern extends User {
     protected String name;
-    protected int cpf;
+    protected String cpf;
     protected String data_nascismento;
-    protected int telefone;
+    protected String telefone;
     protected String endereco;
     protected Setores setor;
     protected double salario;
     protected TiposFuncionario tipo;
+
+    public boolean valido = true;
 
     public Intern(
             String name,
@@ -19,9 +21,9 @@ public class Intern extends User {
             String username,
             String password,
             String email,
-            int cpf,
+            String cpf,
             String data_nascismento,
-            int telefone,
+            String telefone,
             String endereco,
             Setores setor,
             double salario,
@@ -55,13 +57,15 @@ public class Intern extends User {
         this.name = name;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public boolean setCpf(int cpf) {
-        if (cpf % Math.pow(10, 12) != 0) {
-            System.out.println("O funcionário não pôde ser registrado | cpf inválido");
+    public boolean setCpf(String cpf) {
+        // Contando com o traço
+        if (cpf.length() != 12) {
+            System.out.println("Cpf inválido");
+            this.valido = false;
             return false;
         }
 
@@ -77,11 +81,11 @@ public class Intern extends User {
         this.data_nascismento = data_nascismento;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

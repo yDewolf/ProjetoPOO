@@ -1,11 +1,24 @@
 package com.github.ydewolf;
 
 import com.github.ydewolf.classes.UserHolder;
+import com.github.ydewolf.enums.Setores;
+import com.github.ydewolf.enums.TiposFuncionario;
 
 public class Main {
     public static void main(String[] args) {
         UserHolder user_holder = new UserHolder();
-        user_holder.registerUser("andre", "123456", "andrersng@gmail.com");
-        
+        user_holder.registrarFuncionario(
+            "funcionario1",
+            "funcionario1senha",
+            "funcionario@email.com",
+            "",
+            "123456789-10", 
+            "01-01-2000", 
+            "14990000000", 
+            "Rua josé de maria, 01", 
+            Setores.TI, 
+            10000.0, 
+            TiposFuncionario.CLT        
+        );
     }
 }

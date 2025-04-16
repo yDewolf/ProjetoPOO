@@ -33,8 +33,8 @@ public class UserHolder {
         String email
     ) {
         User user = new User(this, username, password, email);
-        users.add(user);
 
+        users.add(user);
         System.out.println("O usuário " + user.username + " foi registrado com sucesso");
     }
 
@@ -43,19 +43,22 @@ public class UserHolder {
             String username,
             String password,
             String email,
-            int cpf,
+            String cpf,
             String data_nascismento,
-            int telefone,
+            String telefone,
             String endereco,
             Setores setor,
             double salario,
             TiposFuncionario tipo
         ) {
             
-
             Intern funcionario = new Intern(name, this, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
+            if (!funcionario.valido) {
+                System.out.println("O funcionário não pôde ser registrado");
+                return;
+            }
+
             users.add(funcionario);
-            
             System.out.println("O funcionario " + funcionario.name + " foi registrado com sucesso");
     }
 
