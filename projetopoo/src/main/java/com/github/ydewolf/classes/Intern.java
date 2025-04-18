@@ -1,5 +1,6 @@
 package com.github.ydewolf.classes;
 
+import com.github.ydewolf.abstracts.BaseLoginSystem;
 import com.github.ydewolf.enums.Setores;
 import com.github.ydewolf.enums.TiposFuncionario;
 
@@ -42,11 +43,11 @@ public class Intern extends User {
     }
 
     public void baterPonto() {
-        this.user_holder.baterPonto(this);
+        ((UserHolder) this.user_holder).baterPonto(this);
     }
 
     public void seDemitir() {
-        this.user_holder.removeUser(new UserSession(this), this.username);
+        ((UserHolder) this.user_holder).removeUser(new UserSession(this), this.username);
     }
 
     public String getName() {

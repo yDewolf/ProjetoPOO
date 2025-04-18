@@ -25,11 +25,11 @@ public class Admin extends Intern {
         double salario,
         TiposFuncionario tipo
     ) {
-        this.user_holder.registrarFuncionario(TiposUsuario.NORMAL, name, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
+        ((UserHolder) this.user_holder).registrarFuncionario(TiposUsuario.NORMAL, name, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
     }
 
     public void demitirFuncionario() {
-        this.user_holder.removeUser(new UserSession(this), this.username);
+        ((UserHolder) this.user_holder).removeUser(new UserSession(this), this.username);
     }
 
     public void atualizarSalario(String username, double salario) {

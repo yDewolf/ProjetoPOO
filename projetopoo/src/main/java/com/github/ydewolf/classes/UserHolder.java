@@ -3,13 +3,13 @@ package com.github.ydewolf.classes;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import com.github.ydewolf.abstracts.BaseLoginSystem;
 import com.github.ydewolf.enums.PontoFormat;
 import com.github.ydewolf.enums.Setores;
 import com.github.ydewolf.enums.TiposFuncionario;
 import com.github.ydewolf.enums.TiposUsuario;
 
-public class UserHolder {
-    private ArrayList<User> users;
+public class UserHolder extends BaseLoginSystem {
     private ArrayList<String[]> pontos;
     
     public UserHolder() {
@@ -26,17 +26,6 @@ public class UserHolder {
         }
 
         return session;
-    }
-
-    public void registerUser(
-        String username,
-        String password,
-        String email
-    ) {
-        User user = new User(this, username, password, email);
-
-        users.add(user);
-        System.out.println("O usuário " + user.username + " foi registrado com sucesso");
     }
 
     public void registrarFuncionario(
@@ -92,16 +81,6 @@ public class UserHolder {
         // Usuário é demitido
         this.users.remove(user_idx);
         System.out.println("O usuário " + username + " foi demitido com sucesso");
-    }
-
-    public User getUser(String username) {
-        for (User user : this.users) {
-            if (user.username.equals(username)) {
-                return user;
-            }
-        }
-
-        return null;
     }
 
     public void baterPonto(User user) {

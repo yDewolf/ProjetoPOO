@@ -1,13 +1,15 @@
 package com.github.ydewolf.classes;
 
+import com.github.ydewolf.abstracts.BaseLoginSystem;
+
 public class User {
-    protected UserHolder user_holder;
+    protected BaseLoginSystem user_holder;
     protected String username;
     protected String password;
     protected String email;
 
     public User(
-        UserHolder holder,
+        BaseLoginSystem holder,
         String username,
         String password,
         String email
@@ -20,5 +22,9 @@ public class User {
 
     public String getPassword() {
         return this.password;
+    }
+
+    public String getUsername(){
+        return this.username;
     }
 }
