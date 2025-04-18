@@ -19,15 +19,6 @@ public class UserHolder extends BaseLoginSystem {
         this.registerUser("admin", "admin", "default@email.com");
     }
 
-    public UserSession logIn(String username, String password) {
-        UserSession session = new UserSession(this.getUser(username));
-        if (!session.isLogged()) {
-            return new UserSession(null);
-        }
-
-        return session;
-    }
-
     public void registrarFuncionario(
             TiposUsuario tipo_usuario,
             String name,
@@ -64,6 +55,7 @@ public class UserHolder extends BaseLoginSystem {
 
     }
 
+    @Override
     public void removeUser(UserSession session, String username) {
         if (!session.isLogged()) {
             System.err.println("ERROR: You can't remove a user if you aren't logged");
@@ -83,8 +75,17 @@ public class UserHolder extends BaseLoginSystem {
         System.out.println("O usuário " + username + " foi demitido com sucesso");
     }
 
+    // Polimorfismo
+    
     public void baterPonto(User user) {
         String[] ponto_data = {LocalDateTime.now().toString(), user.username};
+        this.pontos.add(ponto_data);
+
+        System.out.println(ponto_data[PontoFormat.TIME.ordinal()] + " | " + ponto_data[PontoFormat.USERNAME.ordinal()] + " bateu ponto");
+    }
+    
+    public void baterPonto(UserSession session) {
+        String[] ponto_data = {LocalDateTime.now().toString(), session.getUser().getUsername()};
         this.pontos.add(ponto_data);
 
         System.out.println(ponto_data[PontoFormat.TIME.ordinal()] + " | " + ponto_data[PontoFormat.USERNAME.ordinal()] + " bateu ponto");

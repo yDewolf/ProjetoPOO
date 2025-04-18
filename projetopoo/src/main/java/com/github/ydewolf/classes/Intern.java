@@ -1,6 +1,5 @@
 package com.github.ydewolf.classes;
 
-import com.github.ydewolf.abstracts.BaseLoginSystem;
 import com.github.ydewolf.enums.Setores;
 import com.github.ydewolf.enums.TiposFuncionario;
 
