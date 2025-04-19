@@ -6,7 +6,7 @@ import com.github.ydewolf.enums.TiposFuncionario;
 public class Intern extends User {
     protected String name;
     protected String cpf;
-    protected String data_nascismento;
+    protected String data_nascimento;
     protected String telefone;
     protected String endereco;
     protected Setores setor;
@@ -22,7 +22,7 @@ public class Intern extends User {
             String password,
             String email,
             String cpf,
-            String data_nascismento,
+            String data_nascimento,
             String telefone,
             String endereco,
             Setores setor,
@@ -33,7 +33,7 @@ public class Intern extends User {
         super(holder, username, password, email);
         this.setName(name);
         this.setCpf(cpf);
-        this.setData_nascismento(data_nascismento);
+        this.setData_nascimento(data_nascimento);
         this.setTelefone(telefone);
         this.setEndereco(endereco);
         this.setSetor(setor);
@@ -73,12 +73,12 @@ public class Intern extends User {
         return true;
     }
 
-    public String getData_nascismento() {
-        return data_nascismento;
+    public String getData_nascimento() {
+        return data_nascimento;
     }
 
-    public void setData_nascismento(String data_nascismento) {
-        this.data_nascismento = data_nascismento;
+    public void setData_nascimento(String data_nascimento) {
+        this.data_nascimento = data_nascimento;
     }
 
     public String getTelefone() {

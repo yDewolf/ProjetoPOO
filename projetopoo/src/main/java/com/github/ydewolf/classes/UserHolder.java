@@ -1,6 +1,7 @@
 package com.github.ydewolf.classes;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import com.github.ydewolf.abstracts.BaseLoginSystem;
@@ -16,7 +17,12 @@ public class UserHolder extends BaseLoginSystem {
         this.users = new ArrayList<>();
         this.pontos = new ArrayList<>();
 
-        this.registerUser("admin", "admin", "default@email.com");
+        // Registrar o usuário admin padrão
+        this.registrarFuncionario(
+            TiposUsuario.ADMIN, "Admin", "admin", 
+            "admin", "default@admin.account", "123456789-10", 
+            null, null, 
+            null, null, 0, null);
     }
 
     public void registrarFuncionario(
@@ -26,7 +32,7 @@ public class UserHolder extends BaseLoginSystem {
             String password,
             String email,
             String cpf,
-            String data_nascismento,
+            String data_nascimento,
             String telefone,
             String endereco,
             Setores setor,
@@ -34,7 +40,12 @@ public class UserHolder extends BaseLoginSystem {
             TiposFuncionario tipo
         ) {
             if (tipo_usuario == TiposUsuario.ADMIN) {
-                Admin funcionario = new Admin(name, this, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
+                Admin funcionario = new Admin(
+                        name, this, username,
+                        password, email, cpf,
+                        data_nascimento, telefone, endereco,
+                        setor, salario, tipo
+                );
                 if (!funcionario.valido) {
                     System.out.println("O funcionário não pôde ser registrado");
                     return;
@@ -43,7 +54,12 @@ public class UserHolder extends BaseLoginSystem {
                 users.add(funcionario);
                 System.out.println("O dono " + funcionario.name + " foi registrado com sucesso");
             } else {
-                Intern funcionario = new Intern(name, this, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
+                Intern funcionario = new Intern(
+                    name, this, username,
+                    password, email, cpf,
+                    data_nascimento, telefone, endereco,
+                    setor, salario, tipo
+                );
                 if (!funcionario.valido) {
                     System.out.println("O funcionário não pôde ser registrado");
                     return;

@@ -6,10 +6,10 @@ import com.github.ydewolf.enums.TiposUsuario;
 
 public class Admin extends Intern {
     public Admin(String name, UserHolder holder, String username, String password, String email, String cpf,
-            String data_nascismento, String telefone, String endereco, Setores setor, double salario,
+            String data_nascimento, String telefone, String endereco, Setores setor, double salario,
             TiposFuncionario tipo) 
         {
-        super(name, holder, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
+        super(name, holder, username, password, email, cpf, data_nascimento, telefone, endereco, setor, salario, tipo);
     }
 
     public void cadastrarFuncionario(
@@ -18,14 +18,18 @@ public class Admin extends Intern {
         String password,
         String email,
         String cpf,
-        String data_nascismento,
+        String data_nascimento,
         String telefone,
         String endereco,
         Setores setor,
         double salario,
         TiposFuncionario tipo
     ) {
-        ((UserHolder) this.user_holder).registrarFuncionario(TiposUsuario.NORMAL, name, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
+        ((UserHolder) this.user_holder).registrarFuncionario(
+            TiposUsuario.NORMAL, name, username,
+            password, email, cpf, data_nascimento,
+            telefone, endereco, setor, salario, tipo
+        );
     }
 
     public void demitirFuncionario(String username) {
@@ -56,7 +60,7 @@ public class Admin extends Intern {
             System.out.println("O funcionario não está registrado | Username não encontrado");
             return;
         }
-        
+
         if (Intern.class.isInstance(usuario)) {
             ((Intern) usuario).setSetor(setor);
             System.out.println("Setor atualizado com sucesso!");
