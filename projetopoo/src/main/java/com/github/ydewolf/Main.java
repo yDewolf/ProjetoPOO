@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         UserHolder user_holder = new UserHolder();
         user_holder.registrarFuncionario(
-            TiposUsuario.DONO,
+            TiposUsuario.ADMIN,
             "funcionario1",
             "funcionario1senha",
             "senhadofuncionario",

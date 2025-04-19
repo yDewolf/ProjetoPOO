@@ -28,12 +28,22 @@ public class Admin extends Intern {
         ((UserHolder) this.user_holder).registrarFuncionario(TiposUsuario.NORMAL, name, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
     }
 
-    public void demitirFuncionario() {
-        ((UserHolder) this.user_holder).removeUser(new UserSession(this), this.username);
+    public void demitirFuncionario(String username) {
+        if (this.user_holder.getUser(username) == null) {
+            System.out.println("O funcionario não está registrado | Username não encontrado");
+            return;
+        }
+
+        ((UserHolder) this.user_holder).removeUser(new UserSession(this), username);
     }
 
     public void atualizarSalario(String username, double salario) {
         User usuario = this.user_holder.getUser(username);
+        if (usuario == null) {
+            System.out.println("O funcionario não está registrado | Username não encontrado");
+            return;
+        }
+
         if (Intern.class.isInstance(usuario)) {
             ((Intern) usuario).setSalario(salario);
             System.out.println("Salario atualizado com sucesso!");
@@ -42,6 +52,11 @@ public class Admin extends Intern {
 
     public void atualizarSetor(String username, Setores setor) {
         User usuario = this.user_holder.getUser(username);
+        if (usuario == null) {
+            System.out.println("O funcionario não está registrado | Username não encontrado");
+            return;
+        }
+        
         if (Intern.class.isInstance(usuario)) {
             ((Intern) usuario).setSetor(setor);
             System.out.println("Setor atualizado com sucesso!");

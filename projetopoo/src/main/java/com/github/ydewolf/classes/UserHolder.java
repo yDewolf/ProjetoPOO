@@ -33,7 +33,7 @@ public class UserHolder extends BaseLoginSystem {
             double salario,
             TiposFuncionario tipo
         ) {
-            if (tipo_usuario == TiposUsuario.DONO) {
+            if (tipo_usuario == TiposUsuario.ADMIN) {
                 Admin funcionario = new Admin(name, this, username, password, email, cpf, data_nascismento, telefone, endereco, setor, salario, tipo);
                 if (!funcionario.valido) {
                     System.out.println("O funcionário não pôde ser registrado");
