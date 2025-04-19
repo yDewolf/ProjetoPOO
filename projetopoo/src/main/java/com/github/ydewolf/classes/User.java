@@ -15,9 +15,9 @@ public class User {
         String email
     ) {
         this.user_holder = holder;
-        this.username = username;
-        this.password = password;
-        this.email = email;
+        this.setUsername(username);
+        this.setPassword(password);;
+        this.setEmail(email);
     }
 
     public String getPassword() {
@@ -27,4 +27,40 @@ public class User {
     public String getUsername(){
         return this.username;
     }
-}
+    
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setUsername(String new_username) {
+        if (new_username.length() < 4) {
+            System.out.println("O nome de usuário é muito pequeno | Mínimo: 4");
+            return;
+        }
+
+        if (new_username.length() > 32) {
+            System.out.println("O nome de usuário é muito longo | Máximo: 32");
+            return;
+        }
+
+        this.username = new_username;
+    }
+
+    public void setPassword(String new_password) {
+        if (new_password.length() < 4) {
+            System.out.println("A senha é muito curta | Mínimo: 4");
+            return;
+        }
+
+        this.password = new_password;
+    }
+
+    public void setEmail(String new_email) {
+        if (!new_email.contains("@")) {
+            System.out.println("O email não é válido | Tente adicionar @");
+            return;
+        }
+
+        this.email = new_email;
+    }   
+ }
